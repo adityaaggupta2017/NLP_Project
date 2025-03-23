@@ -18,6 +18,6 @@ STEP - 3 : python predictions_BOW.py --model_path models_BOW/SENDER_with_power_m
 
 STEP - 1 : cd python_scripts
 
-STEP - 2 : python .\baseline_context_LSTM.py
+STEP - 2 : python baseline_context_LSTM.py
 
-STEP - 3 : python predictions_context_LSTM.py --model_path models_lstm/best_model.pt --sample_message "I promise I won't attack your territory next turn." --power_delta 0
+STEP - 3 : python predictions_context_LSTM.py --model_path models_lstm/best_model.pt --sample_message "I promise I won't attack your territory next turn." --power_delta 4
