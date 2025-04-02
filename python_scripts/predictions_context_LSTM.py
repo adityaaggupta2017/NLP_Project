@@ -309,7 +309,7 @@ def main():
     
     # Load model checkpoint
     print(f"Loading model from {args.model_path}...")
-    checkpoint = torch.load(args.model_path, map_location=device)
+    checkpoint = torch.load(args.model_path, map_location=device , weights_only=False)
     model_args = checkpoint.get('args', {})
     vocab = checkpoint.get('vocab', {})
     

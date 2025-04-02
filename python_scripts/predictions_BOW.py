@@ -200,7 +200,7 @@ def main():
         print(f"Prediction: {result['prediction']} (Confidence: {result['confidence']:.2f})")
         print(f"Probabilities: Lie: {result['probabilities']['lie']:.2f}, Truth: {result['probabilities']['truth']:.2f}")
         print("-" * 60)
-
+    
 
 if __name__ == "__main__":
     main()
