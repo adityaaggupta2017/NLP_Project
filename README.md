@@ -3,6 +3,7 @@
 The QANTA Diplomacy project involves developing a model that predicts whether messages exchanged between players in the game Diplomacy are deceptive or truthful. The model analyzes in-game conversations and associated metadata to make its predictions. Its performance is evaluated based on how accurately it identifies deceptive and truthful messages.
 
 # EXECUTION INSTRUCTIONS
+The ipynb files for the 2 baselines and the novel models are there also . They can be directly run for inference . The python scripts for the same are as follows : 
 
 1) BASELINE MODELS :  
   BASELINE MODELS ARE STORED TILL NOW IN THE PYTHON SCRIPTS FOLDER :
