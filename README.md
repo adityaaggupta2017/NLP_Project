@@ -75,12 +75,12 @@ The novel models are stored in the folder novel_python_scripts and come in two v
 2. **Train the model:** 
 
   ```bash 
-  python train.py --train_path C:\Git\NLP_Project\NLP_Project\data\train.jsonl --val_path C:\Git\NLP_Project\NLP_Project\data\validation.jsonl --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --model_name roberta-base --batch_size 32 --epochs 5 --lr 5e-6 --use_game_scores --oversample_factor 30 --truth_focal_weight 4.0 --gradient_accumulation_steps 2 --output_dir outputs
+   python train.py --train_path C:\Git\NLP_Project\NLP_Project\data\train.jsonl --val_path C:\Git\NLP_Project\NLP_Project\data\validation.jsonl --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --model_name roberta-base --batch_size 32 --epochs 5 --lr 5e-6 --use_game_scores --oversample_factor 30 --truth_focal_weight 4.0 --gradient_accumulation_steps 2 --output_dir outputs
  
 3. **Run inference:** 
 
   ```bash 
-  python inference.py --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --model_path C:\Git\NLP_Project\NLP_Project\novel_models\kaggle\working\best_macro_f1_model.pt --model_name roberta-base --batch_size 32 --use_game_scores --output_file predictions.jsonl
+   python inference.py --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --model_path C:\Git\NLP_Project\NLP_Project\novel_models\kaggle\working\best_macro_f1_model.pt --model_name roberta-base --batch_size 32 --use_game_scores --output_file predictions.jsonl
 
 
 #### Novel Model with ConceptNet 
@@ -88,18 +88,18 @@ The novel models are stored in the folder novel_python_scripts and come in two v
 1. **Navigate to the `novel_python_scripts` folder:** 
 
   ```bash 
-  cd novel_python_scripts/With_ConceptNet
+   cd novel_python_scripts/With_ConceptNet
 2. **Set up the required dependencies:**
   ```bash 
-  python setup.py --setup_all
+   python setup.py --setup_all
 
 3. **Train the model:** 
   ```bash 
-  python train.py --train_path C:\Git\NLP_Project\NLP_Project\data\train.jsonl --val_path C:\Git\NLP_Project\NLP_Project\data\validation.jsonl --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --conceptnet_path data/numberbatch-en.txt --model_name roberta-base --batch_size 32 --epochs 5 --lr 5e-6 --use_game_scores --oversample_factor 30 --truth_focal_weight 4.0 --gradient_accumulation_steps 2 --output_dir outputs
+   python train.py --train_path C:\Git\NLP_Project\NLP_Project\data\train.jsonl --val_path C:\Git\NLP_Project\NLP_Project\data\validation.jsonl --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --conceptnet_path data/numberbatch-en.txt --model_name roberta-base --batch_size 32 --epochs 5 --lr 5e-6 --use_game_scores --oversample_factor 30 --truth_focal_weight 4.0 --gradient_accumulation_steps 2 --output_dir outputs
 
 4. **Run inference:** 
   ```bash 
-  python inference.py --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --model_path "C:\Git\NLP_Project\NLP_Project\novel_models(With Conceptnet)\kaggle\working\best_macro_f1_model.pt" --conceptnet_path data/numberbatch-en.txt --model_name roberta-base --batch_size 32 --use_game_scores --output_file predictions.jsonl
+   python inference.py --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --model_path "C:\Git\NLP_Project\NLP_Project\novel_models(With Conceptnet)\kaggle\working\best_macro_f1_model.pt" --conceptnet_path data/numberbatch-en.txt --model_name roberta-base --batch_size 32 --use_game_scores --output_file predictions.jsonl
 
 
 ### Drive Link 
