@@ -1,52 +1,109 @@
 # NLP_Project
 
-The QANTA Diplomacy project involves developing a model that predicts whether messages exchanged between players in the game Diplomacy are deceptive or truthful. The model analyzes in-game conversations and associated metadata to make its predictions. Its performance is evaluated based on how accurately it identifies deceptive and truthful messages.
+The QANTA Diplomacy project aims to develop a model that predicts whether messages exchanged between players in the game *Diplomacy* are deceptive or truthful. The project uses in-game conversations and associated metadata to make predictions, with evaluation based on how accurately deceptive and truthful messages are identified.
 
-# EXECUTION INSTRUCTIONS
-The ipynb files for the 2 baselines and the novel models are there also . They can be directly run for inference . The python scripts for the same are as follows : 
+---
 
-1) BASELINE MODELS :  
-  BASELINE MODELS ARE STORED TILL NOW IN THE PYTHON SCRIPTS FOLDER :
+## Table of Contents
 
-  ## 1) BAG OF WORDS PYTHON SCRIPTS
+- [Overview](#overview)
+- [Execution Instructions](#execution-instructions)
+  - [Baseline Models](#baseline-models)
+    - [Bag of Words Model](#bag-of-words-model)
+    - [Context-LSTM + Power Model](#context-lstm--power-model)
+  - [Novel Models](#novel-models)
+    - [Novel Model without ConceptNet](#novel-model-without-conceptnet)
+    - [Novel Model with ConceptNet](#novel-model-with-conceptnet)
+- [Drive Link](#drive-link)
 
-  STEP - 1 : cd python_scripts
+---
 
-  STEP - 2 : python baseline_BOW.py --data_path C:\Git\NLP_Project\NLP_Project\data --save_path models_BOW/ --max_iter 15 --power_threshold 4 (Training Command)
+## Overview
 
-  STEP - 3 : python predictions_BOW.py --model_path models_BOW/SENDER_with_power_model.pkl --vectorizer_path models_BOW/SENDER_with_power_vectorizer.pkl --message "I promise I won't attack your territory next turn." (For Inferenence)
+This repository contains the code for several models developed as part of the QANTA Diplomacy project. Both baseline and novel models are provided, with support for inference through command line scripts and Jupyter Notebook (.ipynb) files.
 
-  ## 2) CONTEXT-LSTM + POWER MODEL
+---
 
-  STEP - 1 : cd python_scripts
+## Execution Instructions
 
-  STEP - 2 : python baseline_context_LSTM.py
+### Baseline Models
 
-  STEP - 3 : python predictions_context_LSTM.py --model_path models_lstm/best_model.pt --sample_message "I promise I won't attack your territory next turn." --power_delta 4
+The baseline models are stored in the `python_scripts` folder. They include a Bag of Words model and a Context-LSTM model.
 
-  ## 3) Models Drive Link
+#### Bag of Words Model
 
-2) NOVEL MODELS : 
+1. **Navigate to the `python_scripts` folder:**
 
-  THE NOVEL PYTHON SCRIPTS ARE STORED IN THE FOLDER NAMED novel_python_scripts . The running commands for both the models(with and without conceptnet) are as follows: 
+   ```bash
+   cd python_scripts
+2. **Train the model:** 
 
-  ## 1) NOVEL MODEL WITHOUT CONCEPTNET 
+  ```bash 
+  python baseline_BOW.py --data_path C:\Git\NLP_Project\NLP_Project\data --save_path models_BOW/ --max_iter 15 --power_threshold 4
 
-  STEP - 1 : cd novel_python_scripts/Without_ConceptNet 
+3. Run inference: 
 
-  STEP - 2 : python train.py --train_path C:\Git\NLP_Project\NLP_Project\data\train.jsonl --val_path C:\Git\NLP_Project\NLP_Project\data\validation.jsonl --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --model_name roberta-base --batch_size 32 --epochs 5 --lr 5e-6 --use_game_scores --oversample_factor 30 --truth_focal_weight 4.0 --gradient_accumulation_steps 2 --output_dir outputs     (FOR TRAINING) 
+  ```bash 
+  python predictions_BOW.py --model_path models_BOW/SENDER_with_power_model.pkl --vectorizer_path models_BOW/SENDER_with_power_vectorizer.pkl --message "I promise I won't attack your territory next turn."
+ 
+#### Context-LSTM + Power Model 
 
-  STEP - 3 : python inference.py --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --model_path C:\Git\NLP_Project\NLP_Project\novel_models\kaggle\working\best_macro_f1_model.pt --model_name roberta-base --batch_size 32 --use_game_scores --output_file predictions.jsonl    (FOR INFERENCE) 
+1. **Navigate to the `python_scripts` folder:** 
+  ```bash
+  cd python_scripts
+2. **Train the model:** 
+
+  ```bash 
+  python baseline_context_LSTM.py
+
+3. **Run inference:** 
+
+  ```bash 
+  python predictions_context_LSTM.py --model_path models_lstm/best_model.pt --sample_message "I promise I won't attack your territory next turn." --power_delta 4
+
+### Novel Models 
+
+The novel models are stored in the folder novel_python_scripts and come in two versions: with and without ConceptNet. 
+
+#### Novel Model without ConceptNet 
+
+1. **Navigate to the `novel_python_scripts` folder:** 
+
+  ```bash  
+   cd novel_python_scripts/Without_ConceptNet
+
+2. **Train the model:** 
+
+  ```bash 
+  python train.py --train_path C:\Git\NLP_Project\NLP_Project\data\train.jsonl --val_path C:\Git\NLP_Project\NLP_Project\data\validation.jsonl --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --model_name roberta-base --batch_size 32 --epochs 5 --lr 5e-6 --use_game_scores --oversample_factor 30 --truth_focal_weight 4.0 --gradient_accumulation_steps 2 --output_dir outputs
+ 
+3. **Run inference:** 
+
+  ```bash 
+  python inference.py --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --model_path C:\Git\NLP_Project\NLP_Project\novel_models\kaggle\working\best_macro_f1_model.pt --model_name roberta-base --batch_size 32 --use_game_scores --output_file predictions.jsonl
 
 
-  ## 2) NOVEL MODEL WITH CONCEPTNET 
+#### Novel Model with ConceptNet 
 
-  STEP - 1 : cd novel_python_scripts/With_ConceptNet 
+1. **Navigate to the `novel_python_scripts` folder:** 
 
-  STEP - 2 : python setup.py --setup_all 
+  ```bash 
+  cd novel_python_scripts/With_ConceptNet
+2. **Set up the required dependencies:**
+  ```bash 
+  python setup.py --setup_all
 
-  STEP - 3 : python train.py --train_path C:\Git\NLP_Project\NLP_Project\data\train.jsonl --val_path C:\Git\NLP_Project\NLP_Project\data\validation.jsonl --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --conceptnet_path data/numberbatch-en.txt --model_name roberta-base --batch_size 32 --epochs 5 --lr 5e-6 --use_game_scores --oversample_factor 30 --truth_focal_weight 4.0 --gradient_accumulation_steps 2 --output_dir outputs   (FOR TRAINING)
+3. **Train the model:** 
+  ```bash 
+  python train.py --train_path C:\Git\NLP_Project\NLP_Project\data\train.jsonl --val_path C:\Git\NLP_Project\NLP_Project\data\validation.jsonl --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --conceptnet_path data/numberbatch-en.txt --model_name roberta-base --batch_size 32 --epochs 5 --lr 5e-6 --use_game_scores --oversample_factor 30 --truth_focal_weight 4.0 --gradient_accumulation_steps 2 --output_dir outputs
 
-  STEP - 4 : python inference.py --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --model_path C:\Git\NLP_Project\NLP_Project\novel_models(With Conceptnet)\kaggle\working\best_macro_f1_model.pt --conceptnet_path data/numberbatch-en.txt --model_name roberta-base --batch_size 32 --use_game_scores --output_file predictions.jsonl    (FOR INFERENCE) 
+4. **Run inference:** 
+  ```bash 
+  python inference.py --test_path C:\Git\NLP_Project\NLP_Project\data\test.jsonl --model_path "C:\Git\NLP_Project\NLP_Project\novel_models(With Conceptnet)\kaggle\working\best_macro_f1_model.pt" --conceptnet_path data/numberbatch-en.txt --model_name roberta-base --batch_size 32 --use_game_scores --output_file predictions.jsonl
 
-Drive Link - https://drive.google.com/drive/folders/1zNyJ8Cs1Vzt1ohzljB5PHJHfILcK5Xcz?usp=sharing
+
+### Drive Link 
+You can access the models and additional data via the following Google Drive link: 
+
+https://drive.google.com/drive/folders/1zNyJ8Cs1Vzt1ohzljB5PHJHfILcK5Xcz?usp=sharing
+
